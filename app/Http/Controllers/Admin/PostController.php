@@ -88,7 +88,8 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('edit', compact('post'));
+        $types=Type::all();
+        return view('edit', compact('post','types'));
     }
 
     /**
@@ -117,6 +118,8 @@ class PostController extends Controller
         }
         $post->slug = $form_data['slug'];
         $post->description = $form_data['description'];
+
+        $post->type_id = $form_data['type_id'];
 
         $post->update();
 

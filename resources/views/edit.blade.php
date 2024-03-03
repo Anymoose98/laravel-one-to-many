@@ -39,6 +39,17 @@
                     </div>
 
                     <div class="form-group mt-3">
+                        <label for="title">Seleziona categoria</label><br>
+                        <select name="type_id" class="form-select">
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}" {{ old('type_id', $post->type_id) == $type->id ? 'selected' : '' }}>
+                                    {{ $type->type }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-3">
                         <label for="title">Inserisci una descrizione</label><br>
                         <textarea required name="description" placeholder="Inserisci una descrizione" cols="85" rows="5" class="form-control">{{$post->description}}</textarea>
                     </div>
