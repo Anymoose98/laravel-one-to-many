@@ -10,7 +10,8 @@
             @endif
         </div>
         <div class="col-6">
-            <h1>{{$post['title']}}</h1>
+            <h1>titolo: <strong>{{$post['title']}} </strong></h1>
+            <h2>Genere: <strong>{{!empty($post->type->type) ? $post->type->type : 'Non specificato'}}</strong> </h2>
             <h4>{{$post['slug']}}</h4>
             <p>{{$post['description']}}</p>
         </div>
