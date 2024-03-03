@@ -24,10 +24,23 @@
                         <label for="slug" class="">Inserisci uno slug personale</label>
                         <input type="text" name="slug" class="form-control" placeholder="Inserisci uno slug personale" required>
                     </div>
+
+                    <div class="form-group mt-3">
+                        <label for="title">Seleziona categoria</label><br>
+                        <select name="type_id" class="form-select">
+                            <option value="">Seleziona categoria</option>
+                            @foreach ($types as $type)
+                                <option value="{{ $type->id }}">{{ $type->type }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="form-group mt-3">
                         <label for="title">Inserisci una descrizione</label><br>
                         <textarea required name="description" placeholder="Inserisci una descrizione" cols="85" rows="5" class="form-control"></textarea>
                     </div>
+
+               
                     <button type="submit" class="btn btn-primary mt-3">Salva il contenuto</button>
                 </form>
             </div>

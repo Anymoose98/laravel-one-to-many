@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use App\Models\Type;
 
 class PostController extends Controller
 {
@@ -30,7 +31,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $types=Type::all();
+        return view('create', compact('types'));
     }
 
     /**
@@ -55,6 +57,9 @@ class PostController extends Controller
 
         $post->slug = $form_data['slug'];
         $post->description = $form_data['description'];
+
+        $post->type_id = $form_data['type_id'];
+
         $post->save();
 
         return redirect()->route('admin.posts.index');
